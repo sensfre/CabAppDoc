@@ -50,13 +50,14 @@
 <li><a class="reference internal" href="#id7">1.6. 感度補正の結果からわかること</a></li>
 <li><a class="reference internal" href="#id8">1.7. 寄り道(妥当という言葉について)</a></li>
 <li><a class="reference internal" href="#id9">1.8. 全社平均の求め方</a></li>
-<li><a class="reference internal" href="#id10">1.9. 長期的な感度の変化への対応</a></li>
-<li><a class="reference internal" href="#id11">1.10. 標本数と標本誤差</a></li>
-<li><a class="reference internal" href="#id12">1.11. より丁寧な解析</a></li>
+<li><a class="reference internal" href="#id10">1.9. 標本数と標本誤差</a></li>
+<li><a class="reference internal" href="#id11">1.10. より丁寧な解析</a></li>
+<li><a class="reference internal" href="#id12">1.11. 長期的な感度の変化への対応</a></li>
 <li><a class="reference internal" href="#id13">1.12. ２グループに分けた経緯</a></li>
 <li><a class="reference internal" href="#id14">1.13. ２グループに分ける利点/欠点</a></li>
 <li><a class="reference internal" href="#id15">1.14. その他</a></li>
 <li><a class="reference internal" href="#id16">1.15. ２グループ分析で分かったこと</a></li>
+<li><a class="reference internal" href="#id17">1.16. おまけ</a></li>
 </ul>
 </li>
 </ul>
@@ -225,24 +226,14 @@ W_j &amp;= \exp(-\frac{|T_j - t|}{D})\end{split}\]</div>
 </div>
 </div>
 <div class="section" id="id10">
-<h2>1.9. 長期的な感度の変化への対応<a class="headerlink" href="#id10" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<p>日本の報道機関の調査について調べると、内閣支持率などの感度は安定している
-ことが分かります。定量的に言い換えると、サンプル数や回答数から予測される
-精度を十分に生かせる安定性があります。毎回の調査毎に、支持率を調査する担
-当者は、変更になることも多いと思うのですが、それでも安定性を保つようにき
-ちんと統御されている様子がうかがえます。</p>
-<p>そうはいっても長い年月の間には調査方法の変更や、その他の要因によって感度
-も変化することはあります。そういう場合は、直近 半年～1年くらいの調査結果
-を使って、感度を求め直せば、感度の変化を考慮した分析が可能になります。</p>
-</div>
-<div class="section" id="id11">
-<h2>1.10. 標本数と標本誤差<a class="headerlink" href="#id11" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<p>調べればすぐに分かることですが、標本誤差の値をいくつか
-載せておきます。</p>
-<p>誤差に正規分布(標準偏差をσ)を仮定したとき、
-結果が+/-λσの範囲に収まる確率をが信頼水準と呼ぶ。
-信頼水準は、λ=1 なら 68.2%, λ=2 なら 95.4% になる。</p>
-<p>標本調査の誤差 d は、以下の式で与えられる。</p>
+<h2>1.9. 標本数と標本誤差<a class="headerlink" href="#id10" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>説明の都合上、ここで標本誤差について説明します。
+調べればすぐに分かることですが、標本誤差の値をいくつか
+求めておきましょう。
+誤差に正規分布(標準偏差をσ)を仮定したとき、
+結果が+/-λσの範囲に収まる確率をが信頼水準と呼びます。
+信頼水準は、λ=1 なら 68.2%, λ=2 なら 95.4% です。</p>
+<p>標本調査の誤差 d は、以下の式で与えられます。</p>
 <div class="math notranslate nohighlight">
 \[d = λ \sqrt{\frac{p(1-p)}{N}}\]</div>
 <p>例えば支持率が 50 pt 付近にあるときの標本誤差(信頼区間 95%)は、
@@ -270,26 +261,42 @@ W_j &amp;= \exp(-\frac{|T_j - t|}{D})\end{split}\]</div>
 </tbody>
 </table>
 </div>
-<div class="section" id="id12">
-<h2>1.11. より丁寧な解析<a class="headerlink" href="#id12" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="section" id="id11">
+<h2>1.10. より丁寧な解析<a class="headerlink" href="#id11" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p>複数の調査結果の平均を求めるときは、各測定の精度に応じて重み付けをするとより
 丁寧です。いくつか仮定はありますが、重みとして分散(標準偏差の二乗)の逆数が
-よく用いられます。標準偏差 <span class="math notranslate nohighlight">\(\sigma\)</span> は、標本誤差の項で説明した d の半
-分の値です。</p>
+よく用いられます。標準偏差 <span class="math notranslate nohighlight">\(\sigma\)</span> は、前項で示した、
+信頼区間 95% の標本誤差 d の半分の値です。</p>
 <div class="math notranslate nohighlight">
 \[w_j = \frac{1}{\sigma ^2}\]</div>
+</div>
+<div class="section" id="id12">
+<h2>1.11. 長期的な感度の変化への対応<a class="headerlink" href="#id12" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>日本の報道機関の調査について調べると、内閣支持率などの感度は安定している
+ことが分かります。定量的に言い換えると、サンプル数や回答数から予測される
+精度を十分に生かせる安定性があります。調査する担当者は、変更になることも
+多いと思われますが、それでも安定性を保つようにきちんと統御されている様子
+がうかがえます。</p>
+<p>そうはいっても、長い年月の間には調査方法の変更や、その他の要因によって感
+度も変化することはあります。そういう場合は、直近 半年～1年くらいの調査結
+果を使って、感度を求め直せば、感度の変化を考慮した分析が可能になります。</p>
+<p>報道各社の内閣支持率のトレンド(2017～2020年)を以下に示します。</p>
+<a class="reference internal image-reference" href="../_images/app_factor.png"><img alt="../_images/app_factor.png" class="align-center" src="../_images/app_factor.png" style="width: 400.0px; height: 280.0px;" /></a>
+<p>不支持率の感度係数(2017～2020年)を以下に示します。</p>
+<a class="reference internal image-reference" href="../_images/nap_factor.png"><img alt="../_images/nap_factor.png" class="align-center" src="../_images/nap_factor.png" style="width: 400.0px; height: 280.0px;" /></a>
 </div>
 <div class="section" id="id13">
 <h2>1.12. ２グループに分けた経緯<a class="headerlink" href="#id13" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p>感度を補正する手法が適用できるためには、各社の感度が安定していることが必用です。
-そこでまず、各社の感度を調べてみました。各社の係数を、支持率 --　不支持の２次元
-平面にプロットしてみると、３つのグループが見えてきました。</p>
+そこでまず、各社の感度を調べてみました(結果は前項の通り)。
+各社の係数を、支持率 --　不支持の２次元平面にプロットしてみると、
+３つのグループが見えてきます。</p>
 <a class="reference internal image-reference" href="../_images/app_nap_factor.jpg"><img alt="../_images/app_nap_factor.jpg" class="align-center" src="../_images/app_nap_factor.jpg" style="width: 336.40000000000003px; height: 292.0px;" /></a>
 <p>JNN は単独なので分析から除外することにしました。JNN が信頼できないとい
 うわけではなく、平均化する相手がいないのでやむなく除外しているだけです。</p>
 <p>残りの２つのグループが、感度係数の違いだけで表現できるとは限らないので
-(グループが違うなら性質も異なると考える方が安全)、しばらくグループごとの
-動きを調べてみることにしました。</p>
+(グループが違なるならば、性質も異なると考える方が安全)、しばらくグループ
+ごとの動きを調べてみることにしました。</p>
 <p>10社まとめて平均化することの妥当性を確認するには、補正後の値と発表値との
 差を見るだけで十分という考え方もあります。そういう観点からは、無駄が多い
 分析だなと思ったりもしますが、より高精度な感度補正の方式を導き出せる可能
@@ -324,7 +331,7 @@ W_j &amp;= \exp(-\frac{|T_j - t|}{D})\end{split}\]</div>
 つづけています。</p>
 <p>内閣支持率は調査する機関によって差があるけれども、同じような動きを検出で
 きています(動きがほぼ平行)。そのことを一目で伝えるには、どういった表現が良
-いかを考えながら、ぼちぼちと投稿を続けたいと思います。</p>
+いかといったことを考えながら、ぼちぼちと投稿を続けたいと思います。</p>
 </div>
 <div class="section" id="id16">
 <h2>1.15. ２グループ分析で分かったこと<a class="headerlink" href="#id16" title="このヘッドラインへのパーマリンク">¶</a></h2>
@@ -334,6 +341,14 @@ W_j &amp;= \exp(-\frac{|T_j - t|}{D})\end{split}\]</div>
 <li><p>重ね聞きによって支持率だけでなく不支持率も増加すると説明されることが
 多いが、今の日本に関して言えば重ね聞きの有無による不支持率の差は小さい。</p></li>
 </ul>
+</div>
+<div class="section" id="id17">
+<h2>1.16. おまけ<a class="headerlink" href="#id17" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>twitter には、主に2グループに分けた分析を投稿していますが、
+報道 10 社の平均も求めています(JNN も含めて)。
+当方の分析より、三春充希(はる)★未来選挙プロジェクトさん
+の分析の方が丁寧なので、今は公表してません。</p>
+<a class="reference internal image-reference" href="../_images/g_trend_weekly.png"><img alt="../_images/g_trend_weekly.png" class="align-center" src="../_images/g_trend_weekly.png" style="width: 480.0px; height: 300.0px;" /></a>
 </div>
 </div>
 
