@@ -1,0 +1,363 @@
+
+
+<!doctype html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <title>1. 内閣支持率の分析手順 &#8212; CabAppDoc  ドキュメント</title>
+    <link rel="stylesheet" href="../_static/bizstyle.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script type="text/javascript" src="../_static/translations.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="../_static/bizstyle.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="検索" href="../search.html" />
+    <link rel="prev" title="Welcome to CabAppDoc&#39;s documentation!" href="../index.html" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
+    <![endif]-->
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>ナビゲーション</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="総合索引"
+             accesskey="I">索引</a></li>
+        <li class="right" >
+          <a href="../index.html" title="Welcome to CabAppDoc&#39;s documentation!"
+             accesskey="P">前へ</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">CabAppDoc  ドキュメント</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">目次</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">1. 内閣支持率の分析手順</a><ul>
+<li><a class="reference internal" href="#id2">1.1. 現状</a></li>
+<li><a class="reference internal" href="#id3">1.2. 平均化の目的と問題点</a></li>
+<li><a class="reference internal" href="#id4">1.3. 事前に感度を補正する意味</a></li>
+<li><a class="reference internal" href="#id5">1.4. 感度の求め方</a></li>
+<li><a class="reference internal" href="#id6">1.5. 感度補正の実例</a></li>
+<li><a class="reference internal" href="#id7">1.6. 感度補正の結果からわかること</a></li>
+<li><a class="reference internal" href="#id8">1.7. 寄り道(妥当という言葉について)</a></li>
+<li><a class="reference internal" href="#id9">1.8. 全社平均の求め方</a></li>
+<li><a class="reference internal" href="#id10">1.9. 長期的な感度の変化への対応</a></li>
+<li><a class="reference internal" href="#id11">1.10. 標本数と標本誤差</a></li>
+<li><a class="reference internal" href="#id12">1.11. より丁寧な解析</a></li>
+<li><a class="reference internal" href="#id13">1.12. ２グループに分けた経緯</a></li>
+<li><a class="reference internal" href="#id14">1.13. ２グループに分ける利点/欠点</a></li>
+<li><a class="reference internal" href="#id15">1.14. その他</a></li>
+<li><a class="reference internal" href="#id16">1.15. ２グループ分析で分かったこと</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>前のトピックへ</h4>
+  <p class="topless"><a href="../index.html"
+                        title="前の章へ">Welcome to CabAppDoc's documentation!</a></p>
+  <div role="note" aria-label="source link">
+    <h3>このページ</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/analysis/cabapp01.rst.txt"
+            rel="nofollow">ソースコードを表示</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">クイック検索</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="検索" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="id1">
+<h1>1. 内閣支持率の分析手順<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<div class="section" id="id2">
+<h2>1.1. 現状<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>ここ最近の日本では、報道関係の約 10 社が、月に一回のペースで比較的規模の
+大きな世論調査を実施しています。内閣支持率の発表値は、調査会社によって高
+め低めがあることは、経験的によく知られています。よって、内閣支持率の変化
+を捉えるためには、同じ会社の前回値との比較が基本になります。また、回答数
+が 1000 件の調査であれば、変化を見るときに +/- 3 pt の誤差(標本誤差,信頼
+区間95%)を考慮する必要があります。これだと、一社だけ見ていては、月が変わ
+って 6 % 変化しても確かな事は言えなくなってしまいます。先ほどの会社毎の
+発表値が調査会社によって異なるとしても、その傾向が安定していれば、全社デ
+ータを統計的に処理することで、もっと早く、もっと高い精度で、変化を捉える
+ことができるはずです。</p>
+</div>
+<div class="section" id="id3">
+<h2>1.2. 平均化の目的と問題点<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>平均化には２つの目的があります。一つは複数のデータを使って標本誤差の影響
+を低減すること、もう一つは、調査会社毎に異なる感度の偏りを取り除いて標準的な指標を得ることです。
+各社の調査日時は異なるので、ある週の調査が感度が高め
+(低め)の調査に偏る事態が発生します。そのまま平均値を計算すると、感度の偏
+りが平均値に現れてしまいます。グラフを見ただけだと、感度の偏りによる見かけの(ウ
+ソの)変化なのか、本当の変化なのかが分からなくなるわけです。</p>
+</div>
+<div class="section" id="id4">
+<h2>1.3. 事前に感度を補正する意味<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>平均を求める前に各社の感度を調整できれば、さきの問題は解消されます。
+いくつか前提が必要ですが、理想的な状況では、一週間毎に +/- 1pt 程度の精度で
+支持率の増減を議論できる可能性もでてきます。</p>
+<p>一つ注意しておきたいのは、内閣支持率には、「真の値」といった考えがなじま
+ないことです。調査方法によって高い低いがあって当然です。以下の説明では、
+10社なら 10社の平均値を基準として、その平均値と各社の違いを、係数(倍率)で
+表現すること想定しています。くどいようですが、この係数が 1 から離れてい
+るからといって、その調査の信頼性が劣るわけではありません。</p>
+</div>
+<div class="section" id="id5">
+<h2>1.4. 感度の求め方<a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>原理を示すために、分析対象が A社, B社, C社の 3 社の場合について説明します。</p>
+<p>まず、調査会社毎に分析期間に含まれる発表値の平均を求めます。
+それぞれ、<span class="math notranslate nohighlight">\(\overline{A}, \overline{B}, \overline{C}\)</span> とします。
+さらに、<span class="math notranslate nohighlight">\(\overline{A}, \overline{B}, \overline{C}\)</span> の平均
+<span class="math notranslate nohighlight">\(M\)</span> を求めます(平均値の平均)。</p>
+<div class="math notranslate nohighlight">
+\[M = (\overline{A} + \overline{B} + \overline{C})/3\]</div>
+<p>感度は平均に対する比率のことなので、
+A社の感度は <span class="math notranslate nohighlight">\(\overline{A}/M\)</span> と表せます(B社, C社も同様)。
+各社の発表値を感度で割れば、感度を補正した値
+(感度 1.0 に相当する内閣支持率)が得られます。</p>
+<p>原理的には、感度を 1 に合わせるのではなく、高め(低め)の感度に合わせても
+かまいません。ただし、そういう値を発表する場合には、無用ないさかいを避け
+るためにも、高めと低めの両方を同時に提示することをお勧めします。</p>
+</div>
+<div class="section" id="id6">
+<h2>1.5. 感度補正の実例<a class="headerlink" href="#id6" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>感度補正の考えを、報道 10 社の実際のデータ(2年間)に適用した結果を見てみ
+ましょう。</p>
+<a class="reference internal image-reference" href="../_images/cab_app_trend3.png"><img alt="../_images/cab_app_trend3.png" class="align-center" src="../_images/cab_app_trend3.png" style="width: 301.2px; height: 281.6px;" /></a>
+<p>感度を補正する前の発表値では +/-10 pt くらいのバラツキがありますが、
+感度を補正した後のプロットでは、ほとんどののデータが +/- 3pt 程度に収
+まっていることが分かります。
+この残ったバラツキは、調査結果に元々含まれる標本誤差で説明できそうですね
+(標本誤差について一例あげると、回答数が 1000、支持率が 50 pt なら、標本
+誤差(信頼区間 95%) は約 3 pt になります)。</p>
+</div>
+<div class="section" id="id7">
+<h2>1.6. 感度補正の結果からわかること<a class="headerlink" href="#id7" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>結果が理論と整合していれば、
+理論そのもの、理論が要求する前提、検証に使用したデータは
+妥当であると判断して良いでしょう。
+今回のケースでは、</p>
+<ul class="simple">
+<li><p>感度係数という単純な補正で十分補正できる</p></li>
+<li><p>調査会社毎の感度は安定している</p></li>
+<li><p>元になるデータは信頼できる(恣意的な改竄などの痕跡はない)</p></li>
+</ul>
+<p>と判できます。</p>
+</div>
+<div class="section" id="id8">
+<h2>1.7. 寄り道(妥当という言葉について)<a class="headerlink" href="#id8" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>妥当という意味は、回答数 1000 件程度の調査が 10 組くらいの現状であれば、
+各社の感度を１つの係数で表現するモデルで十分であり、
+あまり複雑な補正は必要なさそうといった事を含意します。
+より大規模な世論調査が実施されるような状況になれば、より
+複雑な補正式にも意味がでてくるかもしれません。
+正しさというのは、目的や状況しだいということです。</p>
+</div>
+<div class="section" id="id9">
+<h2>1.8. 全社平均の求め方<a class="headerlink" href="#id9" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>全社平均を表す曲線にもいろいろ種類がありますが、移動平均を使うのが簡単です。
+単純な移動平均(前後２週間のデータの平均を求めるなど)で十分なこ
+とも多いけれど、支持率の変化をいち早く検出したい場合は、時間差に応じて重みを変化させる、
+加重移動平均を使うと良いでしょう。
+重みの選び方にもいろいろ種類がありますが、ここで指数関数を使った方法を紹介します。
+理論的に優れているといったことではなく、
+意味が明確で、実装も簡単(間違いにくい)という、現実的な理由で使っています。</p>
+<p>時刻 t における移動平均 <span class="math notranslate nohighlight">\(Y(t)\)</span> は、以下のようになります。</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}Y(t) &amp;= \sum{W_j X_j}/\sum{W_j} \\
+W_j &amp;= \exp(-\frac{|T_j - t|}{D})\end{split}\]</div>
+<p><span class="math notranslate nohighlight">\((T_j, X_j)\)</span> は、求めたい日時 t から一定の期間(例えば +/- 30 日)に
+含まれる調査データです。D は対象時刻と調査時刻の時間差を規格化するための
+時定数です。例えば、D = 7 日の場合について具体的な数字を列挙すれば、当日の
+重みは 1.0、7日離れると 1/e = 0.37、14日離れると1/e^2 = 0.13 になります。</p>
+<p>D の値は、実際にグラフを書いて、見た目で選んでかまいません。
+長期的な変化を精度よく見たいなら D は大きめに(例えば D=30日)、
+短期的な変化(サンプリング間隔の7日スケール)を捉えたいなら D は
+小さめ(例えば D=7日くらい)が良さそうです。どちらが正しいということではなく、
+目的に応じて使い分ければよいものだと思います。
+何かしらの客観性を持たせたいのであれば、
+残差の二乗和を最小化する D を探すのも一つの手です
+(それが最善というわけでもありませんが)。</p>
+<p>ついでにコード断片も載せておきます(適当に切り取ったので、このままでは動
+きません)。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># _tt = [t1, t2, t3, .....]  調査の日付</span>
+<span class="c1"># _vv = [t1, t2, t3, .....]  上記日付における調査結果(感度補正後)</span>
+
+<span class="k">def</span> <span class="nf">_mav</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+    <span class="c1"># 時刻 t における窓付き指数移動平均</span>
+    <span class="c1">#     w_days : [day] 窓幅</span>
+    <span class="c1">#     k_days : [day] 時定数</span>
+    <span class="c1">#</span>
+    <span class="n">ndx</span> <span class="o">=</span> <span class="p">(</span><span class="n">_tt</span> <span class="o">&gt;=</span> <span class="n">t</span> <span class="o">-</span> <span class="n">w_days</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">_tt</span> <span class="o">&lt;=</span> <span class="n">t</span> <span class="o">+</span> <span class="n">w_days</span><span class="p">)</span> <span class="c1"># 窓でクリップ</span>
+    <span class="n">tt</span> <span class="o">=</span> <span class="n">_tt</span><span class="p">[</span><span class="n">ndx</span><span class="p">]</span> <span class="c1"># 窓に含まれる調査の日付</span>
+    <span class="n">vv</span> <span class="o">=</span> <span class="n">_vv</span><span class="p">[</span><span class="n">ndx</span><span class="p">]</span> <span class="c1">#                   値</span>
+    <span class="n">ww</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">tt</span> <span class="o">-</span> <span class="n">t</span><span class="p">)</span><span class="o">/</span><span class="n">k_days</span><span class="p">)</span>  <span class="c1"># 指数的に減少する重み</span>
+    <span class="n">ans</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">ww</span><span class="o">*</span><span class="n">vv</span><span class="p">)</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">ww</span><span class="p">)</span>       <span class="c1"># 重み付き平均</span>
+    <span class="k">return</span> <span class="n">ans</span>
+
+<span class="c1"># 全社平均(指数移動平均)を求める。</span>
+<span class="c1">#     t_node : 稠密 plot を生成する時刻刻み(こまかめに、2日ごととか)</span>
+<span class="n">v_node</span> <span class="o">=</span> <span class="p">[</span><span class="n">_mav</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">t_node</span><span class="p">]</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">t_node</span><span class="p">,</span> <span class="n">v_node</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id10">
+<h2>1.9. 長期的な感度の変化への対応<a class="headerlink" href="#id10" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>日本の報道機関の調査について調べると、内閣支持率などの感度は安定している
+ことが分かります。定量的に言い換えると、サンプル数や回答数から予測される
+精度を十分に生かせる安定性があります。毎回の調査毎に、支持率を調査する担
+当者は、変更になることも多いと思うのですが、それでも安定性を保つようにき
+ちんと統御されている様子がうかがえます。</p>
+<p>そうはいっても長い年月の間には調査方法の変更や、その他の要因によって感度
+も変化することはあります。そういう場合は、直近 半年～1年くらいの調査結果
+を使って、感度を求め直せば、感度の変化を考慮した分析が可能になります。</p>
+</div>
+<div class="section" id="id11">
+<h2>1.10. 標本数と標本誤差<a class="headerlink" href="#id11" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>調べればすぐに分かることですが、標本誤差の値をいくつか
+載せておきます。</p>
+<p>誤差に正規分布(標準偏差をσ)を仮定したとき、
+結果が+/-λσの範囲に収まる確率をが信頼水準と呼ぶ。
+信頼水準は、λ=1 なら 68.2%, λ=2 なら 95.4% になる。</p>
+<p>標本調査の誤差 d は、以下の式で与えられる。</p>
+<div class="math notranslate nohighlight">
+\[d = λ \sqrt{\frac{p(1-p)}{N}}\]</div>
+<p>例えば支持率が 50 pt 付近にあるときの標本誤差(信頼区間 95%)は、
+以下の通りです。</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 45%" />
+<col style="width: 55%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>N 標本数</p></th>
+<th class="head"><p>d 標本誤差</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>500</p></td>
+<td><p>4.5 pt</p></td>
+</tr>
+<tr class="row-odd"><td><p>1000</p></td>
+<td><p>3.2 pt</p></td>
+</tr>
+<tr class="row-even"><td><p>2000</p></td>
+<td><p>2.2 pt</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id12">
+<h2>1.11. より丁寧な解析<a class="headerlink" href="#id12" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>複数の調査結果の平均を求めるときは、各測定の精度に応じて重み付けをするとより
+丁寧です。いくつか仮定はありますが、重みとして分散(標準偏差の二乗)の逆数が
+よく用いられます。標準偏差 <span class="math notranslate nohighlight">\(\sigma\)</span> は、標本誤差の項で説明した d の半
+分の値です。</p>
+<div class="math notranslate nohighlight">
+\[w_j = \frac{1}{\sigma ^2}\]</div>
+</div>
+<div class="section" id="id13">
+<h2>1.12. ２グループに分けた経緯<a class="headerlink" href="#id13" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>感度を補正する手法が適用できるためには、各社の感度が安定していることが必用です。
+そこでまず、各社の感度を調べてみました。各社の係数を、支持率 --　不支持の２次元
+平面にプロットしてみると、３つのグループが見えてきました。</p>
+<a class="reference internal image-reference" href="analysis\../img/app_nap_factor.jpg"><img alt="analysis\../img/app_nap_factor.jpg" class="align-center" src="analysis\../img/app_nap_factor.jpg" /></a>
+<p>JNN は単独なので分析から除外することにしました。JNN が信頼できないとい
+うわけではなく、平均化する相手がいないのでやむなく除外しているだけです。</p>
+<p>残りの２つのグループが、感度係数の違いだけで表現できるとは限らないので
+(グループが違うなら性質も異なると考える方が安全)、しばらくグループごとの
+動きを調べてみることにしました。</p>
+<p>10社まとめて平均化することの妥当性を確認するには、補正後の値と発表値との
+差を見るだけで十分という考え方もあります。そういう観点からは、無駄が多い
+分析だなと思ったりもしますが、より高精度な感度補正の方式を導き出せる可能
+性もゼロではありません。10社の全社平均というのは
+全社の調査結果を、支持率--不支持率平面の一点の動きで代表していることになります。
+元の調査の広がりが小さくはないので、一点ではなく二点で代表すれば、何か見えてくる
+かもしれないという期待もあります。</p>
+</div>
+<div class="section" id="id14">
+<h2>1.13. ２グループに分ける利点/欠点<a class="headerlink" href="#id14" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>２つのグループに分けて分析することの利点と欠点を列挙します。</p>
+<p>利点</p>
+<ul class="simple">
+<li><p>調査会社によって差がある事、その差が安定していることを直接示せる。</p></li>
+<li><p>２グループの平行度から定量的な誤差指標を導けるかもしれない</p></li>
+<li><p>グループ間に単純な感度以外に差があれば、その差を検出できるかもしれない。</p></li>
+<li><p>感度以外に差がないことが示せれば、報道10社の補正や平均の妥当性をアピールする材料となる</p></li>
+</ul>
+<p>欠点</p>
+<ul class="simple">
+<li><p>精度と時間分解能の両方で、全社を使った分析に劣る</p></li>
+<li><p>グループ分けが安定とは限らない(政権交代などで見直しが必要になる可能性も)</p></li>
+</ul>
+</div>
+<div class="section" id="id15">
+<h2>1.14. その他<a class="headerlink" href="#id15" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>twitter では、２グループに分けた分析の他に、支持率--不支持率の二次元プロ
+ット(調査結果そのまま)を投稿しています。各社の動きが互いに似ている事を、
+定性的に示すだけであれば、こちらで十分かな思ったりもします。発表値をプロ
+ットしているだけなので、共通理解を得やすいという利点もありそうです。アニ
+メーションは一度見れば十分なのですが、初見の人には評判が良いので、投稿を
+つづけています。</p>
+<p>内閣支持率は調査する機関によって差があるけれども、同じような動きを検出で
+きています(動きがほぼ平行)。そのことを一目で伝えるには、どういった表現が良
+いかを考えながら、ぼちぼちと投稿を続けたいと思います。</p>
+</div>
+<div class="section" id="id16">
+<h2>1.15. ２グループ分析で分かったこと<a class="headerlink" href="#id16" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<ul class="simple">
+<li><p>支持率の 2 グループ間の差は約 10 %。各グループ内で +/-5 % の差がある。</p></li>
+<li><p>不支持率の 2 グループ間の差は少ない (高め/低めが逆転することもある)</p></li>
+<li><p>重ね聞きによって支持率だけでなく不支持率も増加すると説明されることが
+多いが、今の日本に関して言えば重ね聞きの有無による不支持率の差は小さい。</p></li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>ナビゲーション</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="総合索引"
+             >索引</a></li>
+        <li class="right" >
+          <a href="../index.html" title="Welcome to CabAppDoc&#39;s documentation!"
+             >前へ</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">CabAppDoc  ドキュメント</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2020, sken.
+      このドキュメントは <a href="http://sphinx-doc.org/">Sphinx</a> 2.1.2 で生成しました。
+    </div>
+  </body>
+</html>
