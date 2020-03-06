@@ -48,16 +48,15 @@
 <li><a class="reference internal" href="#id5">1.4. 感度の求め方</a></li>
 <li><a class="reference internal" href="#id6">1.5. 感度補正の実例</a></li>
 <li><a class="reference internal" href="#id7">1.6. 感度補正の結果からわかること</a></li>
-<li><a class="reference internal" href="#id8">1.7. 寄り道(妥当という言葉について)</a></li>
-<li><a class="reference internal" href="#id9">1.8. 全社平均の求め方</a></li>
-<li><a class="reference internal" href="#id10">1.9. 標本数と標本誤差</a></li>
-<li><a class="reference internal" href="#id11">1.10. より丁寧な解析</a></li>
-<li><a class="reference internal" href="#id12">1.11. 長期的な感度の変化への対応</a></li>
-<li><a class="reference internal" href="#id13">1.12. ２グループに分けた経緯</a></li>
-<li><a class="reference internal" href="#id14">1.13. ２グループに分ける利点/欠点</a></li>
-<li><a class="reference internal" href="#id15">1.14. その他</a></li>
-<li><a class="reference internal" href="#id16">1.15. ２グループ分析で分かったこと</a></li>
-<li><a class="reference internal" href="#id17">1.16. おまけ</a></li>
+<li><a class="reference internal" href="#id8">1.7. 全社平均の求め方</a></li>
+<li><a class="reference internal" href="#id9">1.8. 標本数と標本誤差</a></li>
+<li><a class="reference internal" href="#id10">1.9. より丁寧な解析</a></li>
+<li><a class="reference internal" href="#id11">1.10. 長期的な感度の変化への対応</a></li>
+<li><a class="reference internal" href="#id12">1.11. ２グループに分けた経緯</a></li>
+<li><a class="reference internal" href="#id13">1.12. ２グループに分ける利点/欠点</a></li>
+<li><a class="reference internal" href="#id14">1.13. その他</a></li>
+<li><a class="reference internal" href="#id15">1.14. ２グループ分析で分かったこと</a></li>
+<li><a class="reference internal" href="#id16">1.15. おまけ</a></li>
 </ul>
 </li>
 </ul>
@@ -171,19 +170,16 @@ A社の感度は <span class="math notranslate nohighlight">\(\overline{A}/M\)</
 <li><p>調査会社毎の感度は安定している</p></li>
 <li><p>元になるデータは信頼できる(恣意的な改竄などの痕跡はない)</p></li>
 </ul>
-<p>と判できます。</p>
+<p>と判断できそうです。</p>
+<p>判断について「正しい」ではなくて「妥当である」という言葉を使った理由につ
+いて一言。正しさというのは、目的や状況次第で変わってくるものなので、妥当
+という表現を使っています。例えば、現状(回答数 1000 件程度の調査が 10 組
+くらい)であれば、各社の感度を１つの係数で表現するモデルで十分であり、あ
+まり複雑な補正は必要なさそうということです。より大規模な世論調査が実施さ
+れるといった状況の変化があれば、より精密な補正が可能になるかもしれません。</p>
 </div>
 <div class="section" id="id8">
-<h2>1.7. 寄り道(妥当という言葉について)<a class="headerlink" href="#id8" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<p>妥当という意味は、回答数 1000 件程度の調査が 10 組くらいの現状であれば、
-各社の感度を１つの係数で表現するモデルで十分であり、
-あまり複雑な補正は必要なさそうといった事を含意します。
-より大規模な世論調査が実施されるような状況になれば、より
-複雑な補正式にも意味がでてくるかもしれません。
-正しさというのは、目的や状況しだいということです。</p>
-</div>
-<div class="section" id="id9">
-<h2>1.8. 全社平均の求め方<a class="headerlink" href="#id9" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<h2>1.7. 全社平均の求め方<a class="headerlink" href="#id8" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p>全社平均を表す曲線にもいろいろ種類がありますが、移動平均を使うのが簡単です。
 単純な移動平均(前後２週間のデータの平均を求めるなど)で十分なこ
 とも多いけれど、支持率の変化をいち早く検出したい場合は、時間差に応じて重みを変化させる、
@@ -231,8 +227,8 @@ W_j &amp;= \exp(-\frac{|T_j - t|}{D})\end{split}\]</div>
 </pre></div>
 </div>
 </div>
-<div class="section" id="id10">
-<h2>1.9. 標本数と標本誤差<a class="headerlink" href="#id10" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="section" id="id9">
+<h2>1.8. 標本数と標本誤差<a class="headerlink" href="#id9" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p>説明の都合上、ここで標本誤差について説明します。
 調べればすぐに分かることですが、標本誤差の値をいくつか
 求めておきましょう。
@@ -267,8 +263,8 @@ W_j &amp;= \exp(-\frac{|T_j - t|}{D})\end{split}\]</div>
 </tbody>
 </table>
 </div>
-<div class="section" id="id11">
-<h2>1.10. より丁寧な解析<a class="headerlink" href="#id11" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="section" id="id10">
+<h2>1.9. より丁寧な解析<a class="headerlink" href="#id10" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p>複数の調査結果の平均を求めるときは、各測定の精度に応じて重み付けをするとより
 丁寧です。いくつか仮定はありますが、重みとして分散(標準偏差の二乗)の逆数が
 よく用いられます。標準偏差 <span class="math notranslate nohighlight">\(\sigma\)</span> は、前項で示した、
@@ -276,8 +272,8 @@ W_j &amp;= \exp(-\frac{|T_j - t|}{D})\end{split}\]</div>
 <div class="math notranslate nohighlight">
 \[w_j = \frac{1}{\sigma ^2}\]</div>
 </div>
-<div class="section" id="id12">
-<h2>1.11. 長期的な感度の変化への対応<a class="headerlink" href="#id12" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="section" id="id11">
+<h2>1.10. 長期的な感度の変化への対応<a class="headerlink" href="#id11" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p>日本の報道機関の調査について調べると、内閣支持率などの感度は安定している
 ことが分かります。定量的に言い換えると、サンプル数や回答数から予測される
 精度を十分に生かせる安定性があります。調査する担当者は、変更になることも
@@ -291,8 +287,8 @@ W_j &amp;= \exp(-\frac{|T_j - t|}{D})\end{split}\]</div>
 <p>不支持率の感度係数(2017～2020年)を以下に示します。</p>
 <a class="reference internal image-reference" href="../_images/nap_factor.png"><img alt="../_images/nap_factor.png" class="align-center" src="../_images/nap_factor.png" style="width: 400.0px; height: 280.0px;" /></a>
 </div>
-<div class="section" id="id13">
-<h2>1.12. ２グループに分けた経緯<a class="headerlink" href="#id13" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="section" id="id12">
+<h2>1.11. ２グループに分けた経緯<a class="headerlink" href="#id12" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p>感度を補正する手法が適用できるためには、各社の感度が安定していることが必用です。
 そこでまず、各社の感度を調べてみました(結果は前項の通り)。
 各社の係数を、支持率 --　不支持の２次元平面にプロットしてみると、
@@ -311,8 +307,8 @@ W_j &amp;= \exp(-\frac{|T_j - t|}{D})\end{split}\]</div>
 元の調査の広がりが小さくはないので、一点ではなく二点で代表すれば、何か見えてくる
 かもしれないという期待もあります。</p>
 </div>
-<div class="section" id="id14">
-<h2>1.13. ２グループに分ける利点/欠点<a class="headerlink" href="#id14" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="section" id="id13">
+<h2>1.12. ２グループに分ける利点/欠点<a class="headerlink" href="#id13" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p>２つのグループに分けて分析することの利点と欠点を列挙します。</p>
 <p>利点</p>
 <ul class="simple">
@@ -327,8 +323,8 @@ W_j &amp;= \exp(-\frac{|T_j - t|}{D})\end{split}\]</div>
 <li><p>グループ分けが安定とは限らない(政権交代などで見直しが必要になる可能性も)</p></li>
 </ul>
 </div>
-<div class="section" id="id15">
-<h2>1.14. その他<a class="headerlink" href="#id15" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="section" id="id14">
+<h2>1.13. その他<a class="headerlink" href="#id14" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p>twitter では、２グループに分けた分析の他に、支持率--不支持率の二次元プロ
 ット(調査結果そのまま)を投稿しています。各社の動きが互いに似ている事を、
 定性的に示すだけであれば、こちらで十分かな思ったりもします。発表値をプロ
@@ -339,8 +335,8 @@ W_j &amp;= \exp(-\frac{|T_j - t|}{D})\end{split}\]</div>
 きています(動きがほぼ平行)。そのことを一目で伝えるには、どういった表現が良
 いかといったことを考えながら、ぼちぼちと投稿を続けたいと思います。</p>
 </div>
-<div class="section" id="id16">
-<h2>1.15. ２グループ分析で分かったこと<a class="headerlink" href="#id16" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="section" id="id15">
+<h2>1.14. ２グループ分析で分かったこと<a class="headerlink" href="#id15" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <ul class="simple">
 <li><p>支持率の 2 グループ間の差は約 10 %。各グループ内で +/-5 % の差がある。</p></li>
 <li><p>不支持率の 2 グループ間の差は少ない (高め/低めが逆転することもある)</p></li>
@@ -348,8 +344,8 @@ W_j &amp;= \exp(-\frac{|T_j - t|}{D})\end{split}\]</div>
 多いが、今の日本に関して言えば重ね聞きの有無による不支持率の差は小さい。</p></li>
 </ul>
 </div>
-<div class="section" id="id17">
-<h2>1.16. おまけ<a class="headerlink" href="#id17" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="section" id="id16">
+<h2>1.15. おまけ<a class="headerlink" href="#id16" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p>twitter には、主に2グループに分けた分析を投稿していますが、
 報道 10 社の平均も求めています(JNN も含めて)。
 当方の分析より、三春充希(はる)★未来選挙プロジェクトさん
